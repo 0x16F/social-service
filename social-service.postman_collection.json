@@ -1,0 +1,756 @@
+{
+	"info": {
+		"_postman_id": "d08a6856-9cdd-4a8a-99fb-eb557611e991",
+		"name": "social-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14606764"
+	},
+	"item": [
+		{
+			"name": "authorization",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"admin\",\r\n    \"password\": \"yourpassword\",\r\n    \"cf-turnstile-response\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/v0/auth/login",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"v0",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\": \"artem\",\r\n    \"password\": \"rud3nb3rg!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/v0/auth/register",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"v0",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/refresh",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "invite",
+			"item": [
+				{
+					"name": "use",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/v0/invite/:invite",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"v0",
+								"invite",
+								":invite"
+							],
+							"variable": [
+								{
+									"key": "invite",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{uri}}/v0/invite",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"v0",
+								"invite"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get my info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/v0/user",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"v0",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"old_password\": \"yourpassword\",\r\n    \"new_password\": \"GreatItaly\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/v0/user",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"v0",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user profile info",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "social",
+			"item": [
+				{
+					"name": "message",
+					"item": [
+						{
+							"name": "reply",
+							"item": [
+								{
+									"name": "create reply",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"message_id\": 16735,\r\n    \"content\": \"My first reply!\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{uri}}/v0/social/message/reply",
+											"host": [
+												"{{uri}}"
+											],
+											"path": [
+												"v0",
+												"social",
+												"message",
+												"reply"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get all replies",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{uri}}/v0/social/message/reply/:message_id",
+											"host": [
+												"{{uri}}"
+											],
+											"path": [
+												"v0",
+												"social",
+												"message",
+												"reply",
+												":message_id"
+											],
+											"variable": [
+												{
+													"key": "message_id",
+													"value": "1673577692755"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete reply",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{uri}}/v0/social/message/reply/:reply_id",
+											"host": [
+												"{{uri}}"
+											],
+											"path": [
+												"v0",
+												"social",
+												"message",
+												"reply",
+												":reply_id"
+											],
+											"variable": [
+												{
+													"key": "reply_id",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "get all messages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{uri}}/v0/social/message/:user_id?limit=10&offset=0",
+									"host": [
+										"{{uri}}"
+									],
+									"path": [
+										"v0",
+										"social",
+										"message",
+										":user_id"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										}
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create message",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"wall\": 1,\r\n    \"content\": \"Hello, World!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{uri}}/v0/social/message",
+									"host": [
+										"{{uri}}"
+									],
+									"path": [
+										"v0",
+										"social",
+										"message"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete message",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{uri}}/v0/social/message/:message_id",
+									"host": [
+										"{{uri}}"
+									],
+									"path": [
+										"v0",
+										"social",
+										"message",
+										":message_id"
+									],
+									"variable": [
+										{
+											"key": "message_id",
+											"value": "1673577614326"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "like message",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{uri}}/v0/social/message/:message_id",
+									"host": [
+										"{{uri}}"
+									],
+									"path": [
+										"v0",
+										"social",
+										"message",
+										":message_id"
+									],
+									"variable": [
+										{
+											"key": "message_id",
+											"value": "1673577692755"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "profile",
+					"item": [
+						{
+							"name": "avatar",
+							"item": [
+								{
+									"name": "get avatar",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{uri}}/v0/social/profile/avatar/:user_id",
+											"host": [
+												"{{uri}}"
+											],
+											"path": [
+												"v0",
+												"social",
+												"profile",
+												"avatar",
+												":user_id"
+											],
+											"variable": [
+												{
+													"key": "user_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update avatar",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "image",
+													"type": "file",
+													"src": "/C:/Users/rudenberg/Desktop/person/avatar.png"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{uri}}/v0/social/profile/avatar",
+											"host": [
+												"{{uri}}"
+											],
+											"path": [
+												"v0",
+												"social",
+												"profile",
+												"avatar"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete avatar",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{uri}}/v0/social/profile/avatar",
+											"host": [
+												"{{uri}}"
+											],
+											"path": [
+												"v0",
+												"social",
+												"profile",
+												"avatar"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "background",
+							"item": [
+								{
+									"name": "get background",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{uri}}/v0/social/profile/background/:user_id",
+											"host": [
+												"{{uri}}"
+											],
+											"path": [
+												"v0",
+												"social",
+												"profile",
+												"background",
+												":user_id"
+											],
+											"variable": [
+												{
+													"key": "user_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update background",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{uri}}/v0/social/profile/background",
+											"host": [
+												"{{uri}}"
+											],
+											"path": [
+												"v0",
+												"social",
+												"profile",
+												"background"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete background",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{uri}}/v0/social/profile/background",
+											"host": [
+												"{{uri}}"
+											],
+											"path": [
+												"v0",
+												"social",
+												"profile",
+												"background"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "get all profiles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{uri}}/v0/social/profile?limit=10&offset=0",
+									"host": [
+										"{{uri}}"
+									],
+									"path": [
+										"v0",
+										"social",
+										"profile"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get user subscribers",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "get user subscriptions",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{uri}}/v0/social/profile/subscriptions/:user_id?limit=10&offset=0",
+									"host": [
+										"{{uri}}"
+									],
+									"path": [
+										"v0",
+										"social",
+										"profile",
+										"subscriptions",
+										":user_id"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										}
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "subscribe",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{uri}}/v0/social/profile/subscribe/:user_id",
+									"host": [
+										"{{uri}}"
+									],
+									"path": [
+										"v0",
+										"social",
+										"profile",
+										"subscribe",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "feed",
+					"item": [
+						{
+							"name": "get feed news",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{uri}}/v0/social/feed?limit=10&offset=0&type=subscriptions",
+									"host": [
+										"{{uri}}"
+									],
+									"path": [
+										"v0",
+										"social",
+										"feed"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "type",
+											"value": "subscriptions"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

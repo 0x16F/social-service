@@ -1,0 +1,16 @@
+http:
+  port: 52001
+
+database:
+  host: "127.0.0.1:5432"
+  username: "postgres"
+  password: "123456"
+  schema: "test_db"
+  ssl: "disable"
+
+jwt:
+  access: "secret"
+  refresh: "secret"
+
+cf:
+  secret: "secret"
